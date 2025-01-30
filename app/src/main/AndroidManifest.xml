@@ -14,9 +14,10 @@
 
     <!--  TODO: [Define the required permissions](https://developer.android.com/develop/connectivity/network-ops/connecting)  -->
 
-    <!--  TODO: [Specify application class](https://developer.android.com/reference/android/app/Application)  -->
+    <!--  DONE: [Specify application class](https://developer.android.com/reference/android/app/Application)  -->
 
     <application
+        android:name=".InternApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
