@@ -12,6 +12,7 @@ package com.glassdoor.intern.data.repository
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
 import com.github.michaelbull.result.Result
+import com.glassdoor.intern.data.mapper.HeaderInfoMapper
 import com.glassdoor.intern.data.source.InfoApi
 import com.glassdoor.intern.domain.model.HeaderInfo
 import com.glassdoor.intern.domain.repository.InfoRepository
@@ -22,6 +23,7 @@ import javax.inject.Inject
  * TODO: Inject the correct mapper dependency
  */
 internal class InfoRepositoryImpl @Inject constructor(
+    private val mapper: HeaderInfoMapper,
     private val infoApi: InfoApi,
 ) : InfoRepository {
 
@@ -29,14 +31,14 @@ internal class InfoRepositoryImpl @Inject constructor(
         try {
             with(infoApi.getInfo()) {
                 when {
-                    header != null -> Ok(TODO("Convert DTO into domain model"))
-                    error != null -> Err(TODO("Convert to error"))
-                    else -> Err(TODO("Convert to error"))
+                    header != null -> Ok(mapper.toDomain(header, items)/***TODO("Convert DTO into domain model")*/)
+                    error != null -> Err(Throwable(error)/***TODO("Convert to error")*/)
+                    else -> Err(Throwable("Unknown error occurred")/***TODO("Convert to error")*/)
                 }
             }
         } catch (throwable: Throwable) {
             Timber.e(throwable, "InfoRepositoryImpl")
 
-            Err(TODO("Convert to error"))
+            Err(Throwable("Unknown error occurred")/***TODO("Convert to error")*/)
         }
 }
