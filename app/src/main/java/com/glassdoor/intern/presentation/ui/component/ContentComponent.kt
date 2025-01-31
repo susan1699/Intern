@@ -105,17 +105,17 @@ private fun HeaderComponent(
                 modifier = Modifier.padding(InternTheme.dimensions.normal)
             ) {
                 Text(
-                    text = header.title,
+                    text = title,
                     style = MaterialTheme.typography.titleLarge
                 )
-                header.subtitle?.let {
+                if (!description.isNullOrBlank()) {
                     Text(
-                        text = it,
+                        text = description,
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
                 Text(
-                    text = "Last updated: ",
+                    text = "Last updated: $timestamp",
                     style = MaterialTheme.typography.labelSmall
                 )
             }
@@ -203,27 +203,30 @@ private typealias HeaderAndItems = Pair<HeaderUiModel, List<ItemUiModel>>
 private class ContentComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderAndItems> by previewParameterProviderOf(
       /*  TODO("Define UI models for preview purposes")*/
-        HeaderUiModel(title = "Preview Title", subtitle = "Preview Subtitle", lastUpdated = "22 June") to
-                listOf(
-                    ItemUiModel(
-                        title = "Item 1",
-                        description = "Description 1",
-                        imageUrl = null,
-                        timestamp = "10:00"
-                    ),
-                    ItemUiModel(
-                        title = "Item 2",
-                        description = "Description 2",
-                        imageUrl = null,
-                        timestamp = "10:05"
-                    )
+        HeaderUiModel( id = 1,
+            title = "Preview Title",
+            description = "Preview Description",
+            timestamp = "22 June"
+        ) to listOf(
+            ItemUiModel(
+                title = "Item 1",
+                description = "Description 1",
+                imageUrl = null,
+                timestamp = "10:00"
+            ),
+            ItemUiModel(
+                title = "Item 2",
+                description = "Description 2",
+                imageUrl = null,
+                timestamp = "10:05"
+            )
                 )
     )
 
 private class HeaderComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderUiModel> by previewParameterProviderOf(
 //        TODO("Define UI models for preview purposes")
-        HeaderUiModel(title = "Preview Title", subtitle = "Preview Subtitle","28 June")
+        HeaderUiModel(id = 1, title = "Preview Title", description = "Preview Description", timestamp = "28 June")
     )
 
 private class ItemComponentPreviewParameterProvider :

@@ -13,15 +13,17 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * TODO: Define the structure of the DTO model based on the server response
+ * DONE: Define the structure of the DTO model based on the server response
  */
 @JsonClass(generateAdapter = true)
 internal class HeaderInfoDto(
+    @Json(name = "id")
+    val id: Long,
     @Json(name = "title")
     val title: String,
-    @Json(name = "subtitle")
-    val subtitle: String,
-    @Json(name = "lastUpdated")
-    val lastUpdated: Long,
+    @Json(name = "description")
+    val description: String,
+    @Json(name = "timestamp")
+    val timestamp: String
 )
 

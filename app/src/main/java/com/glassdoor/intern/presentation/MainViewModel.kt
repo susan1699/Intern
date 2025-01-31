@@ -126,20 +126,27 @@ internal class MainViewModel @Inject constructor(
     private fun onRefreshScreen(): Flow<PartialState> = flow {
         emit(ShowLoadingState)
         Timber.d("🔄 Fetching data from API...")
-        getHeaderInfoUseCase()
-            .onSuccess { headerInfo ->
-                /**
-                 * TODO: Transform the header domain model to the UI model
-                 * TODO: Emit the transformed UI model as state
-                 */
-                emit(UpdateHeaderState(headerUiModelMapper.toUiModel(headerInfo)))
-                emit(UpdateItemsState(headerInfo.items.map(itemUiModelMapper::toUiModel)))
-            }
-            .onFailure { throwable ->
-                Timber.e(throwable, "❌ API Error - Failed to Load Data")
-                emit(UpdateErrorMessageState(errorMessage = throwable.message))
-            }
-
+       try{
+           getHeaderInfoUseCase()
+               .onSuccess { headerInfo ->
+                   /**
+                    * TODO: Transform the header domain model to the UI model
+                    * TODO: Emit the transformed UI model as state
+                    */
+                   emit(UpdateHeaderState(headerUiModelMapper.toUiModel(headerInfo)))
+                   emit(UpdateItemsState(headerInfo.items.map(itemUiModelMapper::toUiModel)))
+               }
+               .onFailure { throwable ->
+                   Timber.e(throwable, "API Error - Failed to Load Data")
+                   emit(UpdateErrorMessageState(errorMessage = throwable.message))
+               }
+       }catch (e: Exception){
+           Timber.e(e, "Uncaught Exception - Handling in ViewModel")
+           emit(UpdateErrorMessageState(errorMessage = "Unexpected error occurred. Please try again."))
+       }
+       finally{
         emit(HideLoadingState)
+       }
+
     }
 }
