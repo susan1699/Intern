@@ -13,5 +13,8 @@ package com.glassdoor.intern.domain.model
  * TODO: Determine undefined model properties
  */
 data class HeaderInfo(
+    val title: String, // Header title
+    val subtitle: String?, // Optional subtitle
+    val lastUpdated: Long,
     val items: List<ItemInfo>,
 )

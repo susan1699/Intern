@@ -18,6 +18,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -45,6 +46,10 @@ internal fun TopBarComponent(
         /**
          * TODO: Declare a [title](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Text(androidx.compose.ui.text.AnnotatedString,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.font.FontStyle,androidx.compose.ui.text.font.FontWeight,androidx.compose.ui.text.font.FontFamily,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextDecoration,androidx.compose.ui.text.style.TextAlign,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextOverflow,kotlin.Boolean,kotlin.Int,kotlin.Int,kotlin.collections.Map,kotlin.Function1,androidx.compose.ui.text.TextStyle)) using the app name resource from strings
          */
+        Text(
+            text = stringResource(R.string.title), // Using app name from strings.xml
+            style = MaterialTheme.typography.titleLarge
+        )
     },
     actions = {
         ProgressIndicatorComponent(
@@ -95,9 +100,14 @@ private fun TopBarComponentPreview(
     /**
      * TODO: Define a component and use the state to preview it
      */
+    TopBarComponent(
+        isLoading = isLoading,
+        progressClickAction = {},
+    )
 }
 
 private class TopBarComponentPreviewParameterProvider :
     PreviewParameterProvider<Boolean> by previewParameterProviderOf(
-        TODO("Define all possible states for preview purposes")
+        true, false
+       /* TODO("Define all possible states for preview purposes")*/
     )

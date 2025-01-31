@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025, Glassdoor Inc.
+ * Copyright (c)  2025, Glassdoor Inc.
  *
  * Licensed under the Glassdoor Inc Hiring Assessment License.
  * You may not use this file except in compliance with the License.
@@ -11,6 +11,7 @@ package com.glassdoor.intern.presentation.model
 
 import android.os.Parcelable
 import androidx.compose.runtime.Immutable
+import com.glassdoor.intern.domain.model.ItemInfo
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
@@ -19,8 +20,11 @@ import kotlinx.parcelize.Parcelize
  */
 @Immutable
 @Parcelize
-internal class HeaderUiModel() : Parcelable {
+internal data class HeaderUiModel( val title: String,
+                              val subtitle: String?,
+                             val lastUpdated: String,
+                              ) : Parcelable {
 
     @IgnoredOnParcel
-    val isEmpty: Boolean = TODO("Define empty state")
+    val isEmpty: Boolean = title.isBlank() && subtitle.isNullOrBlank() && lastUpdated.isBlank()/*TODO("Define empty state")*/
 }

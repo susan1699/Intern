@@ -28,6 +28,7 @@ internal class InfoRepositoryImpl @Inject constructor(
 ) : InfoRepository {
 
     override suspend fun getHeaderInfo(): Result<HeaderInfo, Throwable> =
+
         try {
             with(infoApi.getInfo()) {
                 when {
