@@ -20,16 +20,17 @@ private const val DATE_FORMAT_PATTERN: String = "MMM dd, yyyy HH:mm"
 
 internal class HeaderUiModelMapper @Inject constructor() {
 
-    private val dateFormatter: DateTimeFormatter = DateTimeFormatter
+    private val dateFormatter: DateTimeFormatter = /*DONE("Define date formatting pattern")*/DateTimeFormatter
         .ofPattern(DATE_FORMAT_PATTERN)
-        .withZone(ZoneId.systemDefault())/*TODO("Define date formatting pattern")*/
+        .withZone(ZoneId.systemDefault())
 
     fun toUiModel(headerInfo: HeaderInfo): HeaderUiModel = with(headerInfo) {
-      /*  TODO("Convert domain model to UI model")*/
+      /*  DONE("Convert domain model to UI model")*/
         HeaderUiModel(
+            id = id,
             title = title,
-            subtitle = subtitle,
-            lastUpdated = Instant.ofEpochSecond(lastUpdated).let(dateFormatter::format), // ✅ Convert domain model to UI model // Convert ItemInfo to ItemUiModel
+            description = description,
+            timestamp = Instant.parse(timestamp).let(dateFormatter::format),
         )
     }
 }

@@ -37,7 +37,7 @@ internal fun MainScreen(
     /**
      * TODO: [Consume UI state safely from the ViewModel](https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects#3)
      */
-    val uiState by viewModel.uiState.collectAsState() // Need to test
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle() // Need to test
 
     Scaffold(
         modifier = modifier,
@@ -71,21 +71,27 @@ private fun MainScreenPreview() = InternTheme {
     val uiState = /*TODO("Define UI state for preview purposes")*/ MainUiState(
         isLoading = false,
         errorMessage = null,
-        header = HeaderUiModel(title = "Preview Header", subtitle = "Hello", lastUpdated = "25th June"),
-        items = listOf(
-            ItemUiModel(
-                title = "Item 1",
-                description = "Description 1",
-                imageUrl = null,
-                timestamp = "10:00 AM"
-            ),
-            ItemUiModel(
-                title = "Item 2",
-                description = "Description 2",
-                imageUrl = null,
-                timestamp = "11:00 AM"
+        header = HeaderUiModel(
+            id = 1,
+            title = "Preview Header",
+            description = "This is a preview description",
+            timestamp = "Jan 31, 2025 12:00 PM",
+        ),
+            items = listOf(
+                ItemUiModel(
+                    title = "Item 1",
+                    description = "Description 1",
+                    imageUrl = null,
+                    timestamp = "10:00 AM"
+                ),
+                ItemUiModel(
+                    title = "Item 2",
+                    description = "Description 2",
+                    imageUrl = null,
+                    timestamp = "11:00 AM"
+                )
             )
-        )
+        
     )
 
     MainScreen(viewModel = uiState.asDummyViewModel)

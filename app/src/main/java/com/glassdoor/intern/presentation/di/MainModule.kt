@@ -24,9 +24,15 @@ internal object MainModule {
     @Provides
     fun provideMainUiState(): MainUiState = MainUiState(
         errorMessage = null,
-        header = HeaderUiModel(title = "", subtitle = "Your personalized feed", lastUpdated = "26 June"),
+        header = HeaderUiModel(
+            id = 1,
+            title = "Welcome to Your Feed",
+            description = "Discover content tailored for you",
+            timestamp = "June 26, 2025 10:00 AM"
+        ),
         isLoading = false,
         items = emptyList()
     )
+
         /***TODO("Define default values and provide initial state")*/
 }

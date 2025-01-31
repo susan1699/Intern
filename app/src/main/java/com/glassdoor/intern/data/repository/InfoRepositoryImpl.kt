@@ -17,6 +17,7 @@ import com.glassdoor.intern.data.source.InfoApi
 import com.glassdoor.intern.domain.model.HeaderInfo
 import com.glassdoor.intern.domain.repository.InfoRepository
 import timber.log.Timber
+import java.io.IOException
 import javax.inject.Inject
 
 /**
@@ -37,9 +38,16 @@ internal class InfoRepositoryImpl @Inject constructor(
                     else -> Err(Throwable("Unknown error occurred")/***TODO("Convert to error")*/)
                 }
             }
-        } catch (throwable: Throwable) {
-            Timber.e(throwable, "InfoRepositoryImpl")
+        } catch (e: IOException) {    // Replaced Throwable with IOException handling since it was causing the app to crash
+            Timber.e(e, "InfoRepositoryImpl")
 
             Err(Throwable("Unknown error occurred")/***TODO("Convert to error")*/)
+        }catch (e: IllegalStateException) {
+            Timber.e(e, "API Error - System Malfunction")
+            Err(Throwable("Unexpected server error. Please try again later."))
+
+        } catch (e: Exception) {
+          Timber.e(e, "Unknown API Error")
+           Err(Throwable("Something went wrong. Please try again."))
         }
 }

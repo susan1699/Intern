@@ -14,6 +14,8 @@ import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Chain
 import okhttp3.Response
+import timber.log.Timber
+import java.io.IOException
 import javax.inject.Inject
 
 private const val TOKEN_KEY: String = "token"
@@ -25,26 +27,32 @@ private const val TOKEN_VALUE: String = "susandsouza0123@gmail.com"
 
 internal class TokenInterceptor @Inject constructor() : Interceptor {
 
-    override fun intercept(chain: Chain): Response = chain.proceed(
-        chain.request().run {
-            when {
-                chain.hashCode() % 5 == 0 -> {
-                    error("System malfunction: incorrect hash code")
-                }
+    override fun intercept(chain: Chain): Response = try{
+        chain.proceed(
+            chain.request().run {
+                when {
+                    chain.hashCode() % 5 == 0 -> {
+                        Timber.e("System malfunction: incorrect hash code")
+                        throw IOException("Unexpected network issue. Please try again.") // This will throw exception instead of app crash
+                    }
 
-                url.toString().endsWith(BuildConfig.ENDPOINT_GET_INFO) -> {
-                    val url: HttpUrl = url
-                        .newBuilder()
-                        .addQueryParameter(TOKEN_KEY, TOKEN_VALUE)
-                        .build()
+                    url.toString().endsWith(BuildConfig.ENDPOINT_GET_INFO) -> {
+                        val url: HttpUrl = url
+                            .newBuilder()
+                            .addQueryParameter(TOKEN_KEY, TOKEN_VALUE)
+                            .build()
 
-                    newBuilder().url(url).build()
-                }
+                        newBuilder().url(url).build()
+                    }
 
-                else -> {
-                    this
+                    else -> {
+                        this
+                    }
                 }
             }
-        }
-    )
+        )
+    }catch (e: Exception) {
+        Timber.e(e, "TokenInterceptor failed: ${e.message}")
+        throw IOException("Network request failed. Please check your connection and try again.", e)
+    }
 }
