@@ -36,11 +36,7 @@ internal class MainActivity : ComponentActivity() {
                 /**
                  * TODO: Define the main composable to display
                  */
-                val uiState by viewModel.uiState.collectAsStateWithLifecycle()// Get UI state from ViewModel
-                ContentComponent(
-                    header = uiState.header,
-                    items = uiState.items
-                )
+                MainScreen(viewModel = viewModel)
             }
         }
     }
