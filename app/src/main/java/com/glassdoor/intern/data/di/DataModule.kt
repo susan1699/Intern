@@ -35,6 +35,7 @@ internal object DataModule {
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
 
+    @ViewModelScoped
     @Provides
     fun provideOkHttpClient(
         interceptor: HttpLoggingInterceptor,

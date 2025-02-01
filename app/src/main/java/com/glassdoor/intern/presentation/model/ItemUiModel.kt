@@ -13,6 +13,7 @@ import android.os.Parcelable
 import androidx.compose.runtime.Immutable
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
+import java.util.UUID
 
 @Immutable
 @Parcelize
@@ -24,5 +25,5 @@ internal data class ItemUiModel(
 ) : Parcelable {
 
     @IgnoredOnParcel
-    val key: String = TODO("Determine the key value")
+    val key: String = if (title.isNotBlank()) title else UUID.randomUUID().toString()/*DONE("Determine the key value")*/
 }

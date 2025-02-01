@@ -11,16 +11,22 @@ package com.glassdoor.intern.presentation.model
 
 import android.os.Parcelable
 import androidx.compose.runtime.Immutable
+import com.glassdoor.intern.domain.model.ItemInfo
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 /**
- * TODO: Define the structure of the UI model based on the domain model
+ * DONE: Define the structure of the UI model based on the domain model
  */
 @Immutable
 @Parcelize
-internal class HeaderUiModel() : Parcelable {
+internal data class HeaderUiModel( val id: Long,
+                                   val title: String,
+                                   val description: String,
+                                   val timestamp: String,
+
+) : Parcelable {
 
     @IgnoredOnParcel
-    val isEmpty: Boolean = TODO("Define empty state")
+    val isEmpty: Boolean = title.isBlank() && description.isBlank() && timestamp.isBlank()/*DONE("Define empty state")*/
 }
