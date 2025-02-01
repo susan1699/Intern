@@ -72,6 +72,8 @@ internal fun ContentComponent(
          * TODO: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
          */
         items(
+            key = { it.key },
+            contentType = { it.title },
             items = items,
             itemContent = { item -> ItemComponent(item) },
         )
@@ -99,6 +101,24 @@ private fun HeaderComponent(
             /**
              * TODO: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
              */
+            Column(
+                modifier = Modifier.padding(InternTheme.dimensions.normal)
+            ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                if (description.isNotBlank()) {
+                    Text(
+                        text = description,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+                Text(
+                    text = "Last updated: $timestamp",
+                    style = MaterialTheme.typography.labelSmall
+                )
+            }
         }
     }
 }
@@ -142,13 +162,13 @@ private fun ItemComponent(item: ItemUiModel) = Card {
                 contentDescription = title,
                 contentScale = ContentScale.Crop,
                 error = rememberVectorPainter(Icons.Default.Warning),
-                model = TODO("[Request an image download](https://github.com/coil-kt/coil#requests)"),
+                model = imageUrl/*TODO("[Request an image download](https://github.com/coil-kt/coil#requests)"),*/
             )
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun ContentComponentPreview(
     @PreviewParameter(ContentComponentPreviewParameterProvider::class)
@@ -161,7 +181,7 @@ private fun ContentComponentPreview(
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun HeaderComponentPreview(
     @PreviewParameter(HeaderComponentPreviewParameterProvider::class) header: HeaderUiModel
@@ -170,7 +190,7 @@ private fun HeaderComponentPreview(
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun ItemComponentPreview(
     @PreviewParameter(ItemComponentPreviewParameterProvider::class) item: ItemUiModel
@@ -182,12 +202,31 @@ private typealias HeaderAndItems = Pair<HeaderUiModel, List<ItemUiModel>>
 
 private class ContentComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderAndItems> by previewParameterProviderOf(
-        TODO("Define UI models for preview purposes")
+      /*  TODO("Define UI models for preview purposes")*/
+        HeaderUiModel( id = 1,
+            title = "Preview Title",
+            description = "Preview Description",
+            timestamp = "22 June"
+        ) to listOf(
+            ItemUiModel(
+                title = "Item 1",
+                description = "Description 1",
+                imageUrl = null,
+                timestamp = "10:00"
+            ),
+            ItemUiModel(
+                title = "Item 2",
+                description = "Description 2",
+                imageUrl = null,
+                timestamp = "10:05"
+            )
+                )
     )
 
 private class HeaderComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderUiModel> by previewParameterProviderOf(
-        TODO("Define UI models for preview purposes")
+//        TODO("Define UI models for preview purposes")
+        HeaderUiModel(id = 1, title = "Preview Title", description = "Preview Description", timestamp = "28 June")
     )
 
 private class ItemComponentPreviewParameterProvider :
