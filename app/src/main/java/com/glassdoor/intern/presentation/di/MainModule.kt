@@ -26,9 +26,9 @@ internal object MainModule {
         errorMessage = null,
         header = HeaderUiModel(
             id = 1,
-            title = "Welcome to Your Feed",
-            description = "Discover content tailored for you",
-            timestamp = "June 26, 2025 10:00 AM"
+            title = "Synoptical Astrology",
+            description = "A horoscope is an astrological chart or diagram representing the positions of celestial bodies at the time of an event.",
+            timestamp = "Nov 10, 2021 02:02 AM"
         ),
         isLoading = false,
         items = emptyList()

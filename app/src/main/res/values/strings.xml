@@ -13,7 +13,6 @@
 
     <!--  TODO: Provide a suitable application name  -->
 
-    <string name="app_name" translatable="false">GlassDoor 2.0</string>
-    <string name="title" translatable="false">Job Listings</string>
+    <string name="app_name" translatable="false">Zodiac Explorer</string>
     <string name="accessibility_navigation_refresh_screen_content">Refresh screen content</string>
 </resources>

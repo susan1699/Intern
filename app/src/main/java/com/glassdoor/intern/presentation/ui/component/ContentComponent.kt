@@ -72,8 +72,8 @@ internal fun ContentComponent(
          * TODO: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
          */
         items(
-            key = { it.key }, // Ensure stable key for UI re-rendering
-            contentType = { "Item" },
+            key = { it.key },
+            contentType = { it.title },
             items = items,
             itemContent = { item -> ItemComponent(item) },
         )
@@ -108,7 +108,7 @@ private fun HeaderComponent(
                     text = title,
                     style = MaterialTheme.typography.titleLarge
                 )
-                if (!description.isNullOrBlank()) {
+                if (description.isNotBlank()) {
                     Text(
                         text = description,
                         style = MaterialTheme.typography.bodyMedium

@@ -37,7 +37,7 @@ internal fun MainScreen(
     /**
      * TODO: [Consume UI state safely from the ViewModel](https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects#3)
      */
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle() // Need to test
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold(
         modifier = modifier,
