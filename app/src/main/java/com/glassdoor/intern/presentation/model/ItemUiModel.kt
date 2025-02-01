@@ -25,5 +25,5 @@ internal data class ItemUiModel(
 ) : Parcelable {
 
     @IgnoredOnParcel
-    val key: String = if (title.isNotBlank()) title else UUID.randomUUID().toString()/*TODO("Determine the key value")*/
+    val key: String = if (title.isNotBlank()) title else UUID.randomUUID().toString()/*DONE("Determine the key value")*/
 }

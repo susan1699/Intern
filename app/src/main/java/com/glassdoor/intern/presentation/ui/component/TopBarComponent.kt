@@ -44,7 +44,7 @@ internal fun TopBarComponent(
     modifier = modifier,
     title = {
         /**
-         * TODO: Declare a [title](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Text(androidx.compose.ui.text.AnnotatedString,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.font.FontStyle,androidx.compose.ui.text.font.FontWeight,androidx.compose.ui.text.font.FontFamily,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextDecoration,androidx.compose.ui.text.style.TextAlign,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextOverflow,kotlin.Boolean,kotlin.Int,kotlin.Int,kotlin.collections.Map,kotlin.Function1,androidx.compose.ui.text.TextStyle)) using the app name resource from strings
+         * DONE: Declare a [title](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Text(androidx.compose.ui.text.AnnotatedString,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.font.FontStyle,androidx.compose.ui.text.font.FontWeight,androidx.compose.ui.text.font.FontFamily,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextDecoration,androidx.compose.ui.text.style.TextAlign,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextOverflow,kotlin.Boolean,kotlin.Int,kotlin.Int,kotlin.collections.Map,kotlin.Function1,androidx.compose.ui.text.TextStyle)) using the app name resource from strings
          */
         Text(
             text = stringResource(R.string.app_name),
@@ -98,7 +98,7 @@ private fun TopBarComponentPreview(
     @PreviewParameter(TopBarComponentPreviewParameterProvider::class) isLoading: Boolean
 ) = InternTheme {
     /**
-     * TODO: Define a component and use the state to preview it
+     * DONE: Define a component and use the state to preview it
      */
     TopBarComponent(
         isLoading = isLoading,
@@ -109,5 +109,5 @@ private fun TopBarComponentPreview(
 private class TopBarComponentPreviewParameterProvider :
     PreviewParameterProvider<Boolean> by previewParameterProviderOf(
         true, false
-       /* TODO("Define all possible states for preview purposes")*/
+       /* DONE("Define all possible states for preview purposes")*/
     )

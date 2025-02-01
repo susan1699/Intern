@@ -35,7 +35,7 @@ internal fun MainScreen(
     modifier: Modifier = Modifier,
 ) {
     /**
-     * TODO: [Consume UI state safely from the ViewModel](https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects#3)
+     * DONE: [Consume UI state safely from the ViewModel](https://developer.android.com/codelabs/jetpack-compose-advanced-state-side-effects#3)
      */
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -68,7 +68,7 @@ internal fun MainScreen(
 @Preview
 @Composable
 private fun MainScreenPreview() = InternTheme {
-    val uiState = /*TODO("Define UI state for preview purposes")*/ MainUiState(
+    val uiState = /*DONE("Define UI state for preview purposes")*/ MainUiState(
         isLoading = false,
         errorMessage = null,
         header = HeaderUiModel(

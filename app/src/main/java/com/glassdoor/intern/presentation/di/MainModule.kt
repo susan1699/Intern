@@ -23,6 +23,7 @@ internal object MainModule {
 
     @Provides
     fun provideMainUiState(): MainUiState = MainUiState(
+        /***DONE("Define default values and provide initial state")*/
         errorMessage = null,
         header = HeaderUiModel(
             id = 1,
@@ -34,5 +35,4 @@ internal object MainModule {
         items = emptyList()
     )
 
-        /***TODO("Define default values and provide initial state")*/
 }

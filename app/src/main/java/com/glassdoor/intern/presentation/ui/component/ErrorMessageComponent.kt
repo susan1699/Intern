@@ -28,7 +28,7 @@ import com.glassdoor.intern.utils.previewParameterProviderOf
 import kotlinx.coroutines.delay
 
 /**
- * TODO: Define how long the error message will be displayed
+ * DONE: Define how long the error message will be displayed
  */
 private const val SHOW_ERROR_MESSAGE_DURATION_IS_MILLIS: Long = 10000L
 
@@ -44,7 +44,7 @@ internal fun ErrorMessageComponent(
 ) { state ->
     if (!state.isNullOrEmpty()) {
         /**
-         * TODO: Define the [background color](https://developer.android.com/jetpack/compose/modifiers#scope-safety), as well as [the color, style, and alignment](https://developer.android.com/jetpack/compose/text/style-text) of the error message
+         * DONE: Define the [background color](https://developer.android.com/jetpack/compose/modifiers#scope-safety), as well as [the color, style, and alignment](https://developer.android.com/jetpack/compose/text/style-text) of the error message
          */
         Text(
             modifier = Modifier
@@ -61,7 +61,7 @@ internal fun ErrorMessageComponent(
             delay(SHOW_ERROR_MESSAGE_DURATION_IS_MILLIS)
 
             /**
-             * TODO: Call an action that hides the error message
+             * DONE: Call an action that hides the error message
              */
             hideErrorMessageAction()
         }

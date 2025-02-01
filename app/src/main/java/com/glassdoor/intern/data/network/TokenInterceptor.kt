@@ -21,7 +21,7 @@ import javax.inject.Inject
 private const val TOKEN_KEY: String = "token"
 
 /**
- * TODO: Declare the email address from your resume as a token
+ * DONE: Declare the email address from your resume as a token
  */
 private const val TOKEN_VALUE: String = "susandsouza0123@gmail.com"
 

@@ -21,7 +21,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 /**
- * TODO: Inject the correct mapper dependency
+ * DONE: Inject the correct mapper dependency
  */
 internal class InfoRepositoryImpl @Inject constructor(
     private val mapper: HeaderInfoMapper,
@@ -33,15 +33,15 @@ internal class InfoRepositoryImpl @Inject constructor(
         try {
             with(infoApi.getInfo()) {
                 when {
-                    header != null -> Ok(mapper.toDomain(header, items)/***TODO("Convert DTO into domain model")*/)
-                    error != null -> Err(Throwable(error)/***TODO("Convert to error")*/)
-                    else -> Err(Throwable("Unknown error occurred")/***TODO("Convert to error")*/)
+                    header != null -> Ok(mapper.toDomain(header, items)/***DONE("Convert DTO into domain model")*/)
+                    error != null -> Err(Throwable(error)/***DONE("Convert to error")*/)
+                    else -> Err(Throwable("Unknown error occurred")/***DONE("Convert to error")*/)
                 }
             }
         } catch (e: IOException) {    // Replaced Throwable with IOException handling since it was causing the app to crash
             Timber.e(e, "InfoRepositoryImpl")
 
-            Err(Throwable("Unknown error occurred")/***TODO("Convert to error")*/)
+            Err(Throwable("Unknown error occurred")/***DONE("Convert to error")*/)
         }catch (e: IllegalStateException) {
             Timber.e(e, "API Error - System Malfunction")
             Err(Throwable("Unexpected server error. Please try again later."))

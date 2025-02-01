@@ -69,7 +69,7 @@ internal fun ContentComponent(
         verticalArrangement = Arrangement.spacedBy(InternTheme.dimensions.double),
     ) {
         /**
-         * TODO: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
+         * DONE: Specify the [item key](https://developer.android.com/jetpack/compose/lists#item-keys) and [content type](https://developer.android.com/jetpack/compose/lists#content-type)
          */
         items(
             key = { it.key },
@@ -99,7 +99,7 @@ private fun HeaderComponent(
     ) {
         with(header) {
             /**
-             * TODO: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
+             * DONE: [Declare the UI](https://developer.android.com/codelabs/jetpack-compose-basics#5) based on the UI model structure
              */
             Column(
                 modifier = Modifier.padding(InternTheme.dimensions.normal)
@@ -162,7 +162,7 @@ private fun ItemComponent(item: ItemUiModel) = Card {
                 contentDescription = title,
                 contentScale = ContentScale.Crop,
                 error = rememberVectorPainter(Icons.Default.Warning),
-                model = imageUrl/*TODO("[Request an image download](https://github.com/coil-kt/coil#requests)"),*/
+                model = imageUrl/*DONE("[Request an image download](https://github.com/coil-kt/coil#requests)"),*/
             )
         }
     }
@@ -202,7 +202,7 @@ private typealias HeaderAndItems = Pair<HeaderUiModel, List<ItemUiModel>>
 
 private class ContentComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderAndItems> by previewParameterProviderOf(
-      /*  TODO("Define UI models for preview purposes")*/
+      /*  DONE("Define UI models for preview purposes")*/
         HeaderUiModel( id = 1,
             title = "Preview Title",
             description = "Preview Description",
@@ -225,7 +225,7 @@ private class ContentComponentPreviewParameterProvider :
 
 private class HeaderComponentPreviewParameterProvider :
     PreviewParameterProvider<HeaderUiModel> by previewParameterProviderOf(
-//        TODO("Define UI models for preview purposes")
+//        DONE("Define UI models for preview purposes")
         HeaderUiModel(id = 1, title = "Preview Title", description = "Preview Description", timestamp = "28 June")
     )
 

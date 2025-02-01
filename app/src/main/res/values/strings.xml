@@ -11,7 +11,7 @@
 
 <resources>
 
-    <!--  TODO: Provide a suitable application name  -->
+    <!--  DONE: Provide a suitable application name  -->
 
     <string name="app_name" translatable="false">Zodiac Explorer</string>
     <string name="accessibility_navigation_refresh_screen_content">Refresh screen content</string>

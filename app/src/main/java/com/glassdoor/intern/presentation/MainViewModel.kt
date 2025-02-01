@@ -37,7 +37,7 @@ import javax.inject.Inject
 internal interface IMainViewModel : UiStateMachine<MainUiState, PartialState, MainIntent>
 
 /**
- * TODO: Inject the correct header mapper dependency
+ * DONE: Inject the correct header mapper dependency
  */
 @HiltViewModel
 internal class MainViewModel @Inject constructor(
@@ -49,7 +49,7 @@ internal class MainViewModel @Inject constructor(
 ) : ViewModel(), IMainViewModel {
 
     /**
-     * TODO: Define the correct methods as callbacks
+     * DONE: Define the correct methods as callbacks
      */
     private val uiStateMachine: UiStateMachine<MainUiState, PartialState, MainIntent> =
         uiStateMachineFactory.create(
@@ -63,7 +63,7 @@ internal class MainViewModel @Inject constructor(
 
     init {
         /**
-         * TODO: Refresh the screen only when the header is empty
+         * DONE: Refresh the screen only when the header is empty
          */
         if (uiState.value.header.isEmpty) {
             acceptIntent(RefreshScreen)
@@ -71,7 +71,7 @@ internal class MainViewModel @Inject constructor(
     }
 
     /**
-     * TODO: Delegate method to [uiStateMachine]
+     * DONE: Delegate method to [uiStateMachine]
      */
     override fun acceptIntent(intent: MainIntent){
         uiStateMachine.acceptIntent(intent)
@@ -98,7 +98,7 @@ internal class MainViewModel @Inject constructor(
     ): MainUiState = when (partialState) {
 
             /**
-             * TODO: Separate handling and update correct properties [previousUiState]
+             * DONE: Separate handling and update correct properties [previousUiState]
              */
         HideLoadingState -> previousUiState.copy(isLoading = false)
 
@@ -130,8 +130,8 @@ internal class MainViewModel @Inject constructor(
            getHeaderInfoUseCase()
                .onSuccess { headerInfo ->
                    /**
-                    * TODO: Transform the header domain model to the UI model
-                    * TODO: Emit the transformed UI model as state
+                    * DONE: Transform the header domain model to the UI model
+                    * DONE: Emit the transformed UI model as state
                     */
                    emit(UpdateHeaderState(headerUiModelMapper.toUiModel(headerInfo)))
                    emit(UpdateItemsState(headerInfo.items.map(itemUiModelMapper::toUiModel)))
